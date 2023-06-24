@@ -1,0 +1,38 @@
+<% if user_signed_in? %>
+  <div class="sidebar card text-dark bg-light mb-5 shadow-lg sticky-top">
+    <div class="card-header text-center">
+      <div class="text-dark">
+        <div class="row">
+          <div class="col-12">ログイン中</div>
+          <div class="col-12">
+            <%= image_tag current_user.get_profile_image(50,50), class: "mt-o rounded-circle"; %>
+            <%= current_user.name %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <ul class="card-text list-unstyled">
+        <li><%= link_to '[投稿]新しい順', posts_path(sort: 'latest') %></li>
+        <li><%= link_to '[投稿]古い順', posts_path(sort: 'old') %></li>
+        <li>
+          <%= link_to posts_path(sort: 'star_count') do %>
+            [投稿]<i class="fas fa-star"></i>が多い順
+          <% end %>
+        </li>
+        <li><%= link_to '[投稿]いいね多い順', posts_path(sort: 'favorite_count') %></li>
+        <li><%= link_to '[投稿]コメント多い順', posts_path(sort: 'comment_count') %></li>
+        <% if current_user.name != "guestuser" %>
+          <li>
+            <%= link_to confirm_deleted_path do %>
+              <font color="#f00">
+                <i class="fas fa-exclamation-triangle"></i>
+                退会する
+              </font>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

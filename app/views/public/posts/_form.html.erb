@@ -1,0 +1,29 @@
+<%= form_with model: post do |f| %>
+  <%= render 'layouts/errors', obj: post %>
+
+  <div class="form-group">
+    <label for="shop_name">
+      【目標】
+      <span class="required">必須</span>
+    </label>
+    <div><%= f.text_field :shop_name, class: "form-control", placeholder: "ex.毎朝のランニング（30文字まで入力可）" %></div>
+  </div>
+
+  <div class="form-group">
+    <label for="impression">
+      【具体的な行動】
+      <span class="required">必須</span>
+    </label>
+    <div><%= f.text_area :impression, class: "form-control", rows: 5, placeholder: "100文字まで入力可" %></div>
+  </div>
+
+  <% end %>
+
+  <div class="form-group">
+    <% if f.object.new_record? %>
+      <%= f.submit '投稿する', class: "btn btn-block btn-success mt-5" %>
+    <% else %>
+      <%= f.submit '更新する', class: "btn btn-block btn-success mt-5" %>
+    <% end %>
+  </div>
+<% end %>
