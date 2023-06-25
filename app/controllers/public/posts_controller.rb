@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
+
   def new
     @post = Post.new
   end
@@ -20,15 +21,15 @@ class Public::PostsController < ApplicationController
       render :new
     end
   end
-  
+
   def show
     @post = Post.find(params[:id])
   end
-  
+
   def edit
     @post = Post.find(params[:id])
   end
-  
+
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
@@ -38,15 +39,17 @@ class Public::PostsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     post = Post.find(params[:id])
     post.destroy
     redirect_to posts_path
   end
-  
+
 private
 
   def post_params
-    params.require(:post).permit(:image, :shop_name, :address, :latitude, :longitude, :menu, :impression, :price, :volume_status, :star)
+    params.require(:post).permit(:goal, :action)
   end
+
+end

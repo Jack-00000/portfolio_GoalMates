@@ -1,0 +1,7 @@
+<div id="comments_error">
+  <%= render 'layouts/errors', obj: @comment %>
+</div>
+<%= form_with model: [post, comment], local: false do |f| %>
+  <%= f.text_area :comment, class: "col-lg-6 col-md-7 col-sm-8", rows: 5, placeholder: "コメントを入力" %>
+  <%= f.submit "送信する" %>
+<% end %>

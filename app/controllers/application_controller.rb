@@ -1,9 +1,12 @@
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_classname
 
-  protected
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  def set_classname
+    if params[:controller] == 'public/homes' && params[:action] == 'top'
+      @classname = 'top-body'
+    else
+      @classname = 'top-except'
+    end
   end
+
 end

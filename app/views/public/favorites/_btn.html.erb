@@ -1,0 +1,11 @@
+<% if post.favorited_by?(current_user) %>
+  <p>
+    <i class="fas fa-heart" style="color: #ff0000;"></i>
+    <%= post.favorites.count %>
+  </p>
+<% else %>
+  <p>
+    <i class="far fa-heart" style="color: #008cff;"></i>
+    <%= post.favorites.count %>
+  </p>
+<% end %>

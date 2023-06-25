@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2023_06_20_054908) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.text "goal", null: false
-    t.text "active", null: false
+    t.text "action", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

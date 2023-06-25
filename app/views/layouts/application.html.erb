@@ -2,19 +2,52 @@
 <html>
   <head>
     <title>GoalMates</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <script src="https://kit.fontawesome.com/f8320138d1.js" crossorigin="anonymous"></script>
-
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/f8320138d1.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
-    <%= render 'layouts/header' %>
-     <div><%= flash[:notice] %></div>
-    <%= yield %>
+  <body class="<%= @classname %>">
+    <div class="wrapper">
+      <div class="mb-4">
+        <%= render 'layouts/header' %>
+      </div>
+
+      <% if flash[:notice] %>
+       <div class="alert alert-success" role="alert">
+        <%= flash[:notice] %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+       </div>
+      <% end %>
+
+      <% if flash[:alert] %>
+        <div class="alert alert-danger" role="alert">
+          <%= flash[:alert] %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+
+      <% if admin_signed_in? %>
+        <div class="text-center my-5">
+          <%= render 'admin/searches/form' %>
+        </div>
+      <% elsif user_signed_in? %>
+        <div class="text-center my-5">
+          <%= render 'public/searches/form' %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

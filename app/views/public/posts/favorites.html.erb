@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 mx-auto">
+      <%= render 'layouts/public_sidebar' %>
+    </div>
+    <div class="col-lg-9 mx-auto">
+      <div class="card shadow-lg py-3">
+        <div class="px-3">
+          <h2 class="headline col-lg-7 col-md-12 col-sm-12 text-center">"<%= current_user.name %>"さんがいいねした一覧</h2>
+        </div>
+        <div class="col-lg-8 col-md-11 col-sm-12 mx-auto">
+          <% if @favorite_posts.present? %>
+            <%= render 'index', posts: @favorite_posts %>
+          <% else %>
+            まだ"いいね"した投稿がありません。
+          <% end %>
+        </div>
+      </div>
+      <%= link_to '戻る', :back, class: "btn btn-outline-dark mt-3" %>
+    </div>
+  </div>
+</div>

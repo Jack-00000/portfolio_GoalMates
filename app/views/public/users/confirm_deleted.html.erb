@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto mt-5 card shadow py-5">
+      <h3 class="text-center">本当に退会しますか？</h3>
+
+      <p class="text-center">
+        退会すると、会員登録情報や<br>
+        これまでの投稿内容が閲覧できなくなります。<br>
+        退会する場合は、「退会する」をクリックしてください。
+      </p>
+      <div class="d-grid gap-2 d-md-block text-center">
+        <%= link_to "退会しない", my_page_path, class: 'btn btn-primary' %>
+        <%= link_to "退会する", is_deleted_path, method: :patch, "data-confirm" => "OKを押すと退会処理がされます。本当によろしいですか？", class: 'btn btn-danger' %>
+      </div>
+
+    </div>
+  </div>
+</div>

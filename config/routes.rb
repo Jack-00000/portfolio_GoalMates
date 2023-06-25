@@ -22,7 +22,8 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about'
     get 'search' => 'searches#search'
     get '/mypage' => 'users#mypage'
-
+    get 'users/confirm_deleted' => 'users#confirm_deleted', as: 'confirm_deleted'
+    patch 'users/is_deleted' => 'users#is_deleted', as: 'is_deleted'
     resources :users, only: [:index, :show, :edit, :update] do
      resource :relationships, only: [:create, :destroy]
      get 'followings' => 'relationships#followings', as: 'followings'
