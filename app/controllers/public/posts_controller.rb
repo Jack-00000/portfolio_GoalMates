@@ -6,8 +6,10 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
-    @posts = Post.page(params[:page])
+
+    released_user_ids = User.where(status: :released).or(User.where(id: current_user&.id)).pluck(:id)
+
+    @posts = Post.where(user_id: released_user_ids).sort_index(params[:sort]).page(params[:page])
   end
 
   def create
@@ -24,6 +26,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit
@@ -43,13 +46,26 @@ class Public::PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    redirect_to posts_path
+    flash[:notice] = "投稿を削除しました"
+    redirect_to mypage_path
+  end
+
+  def favorites
+    @favorite_posts = current_user.favorite_posts.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
 private
 
   def post_params
     params.require(:post).permit(:goal, :action)
+  end
+
+  def is_matching_login_user
+    post = Post.find(params[:id])
+    unless post.user_id == current_user.id
+      flash[:alert] = "他ユーザーの投稿編集画面には遷移できません。"
+      redirect_to post_path(post.id)
+    end
   end
 
 end

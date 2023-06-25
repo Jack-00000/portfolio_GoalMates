@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   validates :goal, presence: true, length: { maximum: 30 }
-  validates :active, presence: true, length: { maximum: 100 }
+  validates :action, presence: true, length: { maximum: 100 }
 
   has_one_attached :image
 

@@ -14,7 +14,6 @@
 
         <div class="row">
           <div class="col-sm-12 col-md-7 mb-3">
-            <div><%= image_tag @post.get_image(500,400), class: "img-thumbnail mx-1 my-1 shadow" %></div>
             <div class="favorite-btn<%= @post.id %>">
               <% if current_user %>
                 <%= render 'public/favorites/btn', post: @post %>
@@ -36,7 +35,7 @@
               <dt>目標</dt>
               <dd class="post-detail"><%= @post.goal %></dd>
               <dt>行動</dt>
-              <dd class="post-detail"><%= @post.active %> </dd>
+              <dd class="post-detail"><%= @post.action %> </dd>
             </dl>
           </div>
         </div>

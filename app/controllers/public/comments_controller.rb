@@ -1,5 +1,5 @@
 class Public::CommentsController < ApplicationController
-  
+
   before_action :authenticate_user!
 
   def create
@@ -7,8 +7,11 @@ class Public::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     @comment.post_id = post.id
-    @comment.save
-    render :index
+    if @comment.save
+      render :index
+    else
+      render :errors
+    end
   end
 
   def destroy
@@ -22,5 +25,5 @@ class Public::CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:comment)
   end
-  
+
 end
