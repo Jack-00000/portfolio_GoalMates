@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+
   before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:edit, :update]
   before_action :ensure_guest_user, only: [:edit]
@@ -9,7 +10,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).per(6)
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def edit
@@ -40,7 +41,7 @@ class Public::UsersController < ApplicationController
 
   def mypage
     @user = current_user
-     @posts = @user.posts.page(params[:page]).per(6)
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(6)
   end
 
 private

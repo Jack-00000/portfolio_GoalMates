@@ -1,0 +1,8 @@
+<% if admin_signed_in? %>
+  <div class="search_form">
+    <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :content, class: "col-lg-4 col-md-6 col-8",  placeholder: "ユーザー名、またはメニュー名を入力", value: @content %>
+      <%= f.submit '検索', class: "btn btn-sm btn-primary" %>
+    <% end %>
+  </div>
+<% end %>

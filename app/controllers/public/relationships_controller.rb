@@ -1,23 +1,28 @@
 class Public::RelationshipsController < ApplicationController
+
   before_action :authenticate_user!
+
   def create
-    current_user.follow(params[:user_id])
-    redirect_to request.referer
+    @user = User.find(params[:user_id])
+    current_user.follow(@user)
+		render :follow
   end
+
   def destroy
-    current_user.unfollow(params[:user_id])
-    redirect_to request.referer
+    @user = User.find(params[:user_id])
+    current_user.unfollow(@user)
+		render :follow
   end
 
   #フォロー
   def followings
-    user = User.find(params[:user_id])
-    @users = user.followings.page(params[:page])
+    @user = User.find(params[:user_id])
+    @users = @user.followings.order(created_at: :desc).page(params[:page])
   end
 
   #フォロワー
   def followers
-    user = User.find(params[:user_id])
-    @users = user.followers.page(params[:page])
+    @user = User.find(params[:user_id])
+    @users = @user.followers.order(created_at: :desc).page(params[:page])
   end
 end

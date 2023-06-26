@@ -1,14 +1,11 @@
 # frozen_string_literal: true
 
 class Admin::SessionsController < Devise::SessionsController
+  before_action :user_exists?, only: [:new]
   # before_action :configure_sign_in_params, only: [:create]
-  
+
   def after_sign_in_path_for(resource)
     admin_root_path
-  end
-
-  def after_sign_out_path_for(resource)
-    new_admin_session_path
   end
 
   # GET /resource/sign_in
@@ -26,7 +23,13 @@ class Admin::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def user_exists?
+    if user_signed_in?
+      redirect_to root_path
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

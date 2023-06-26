@@ -20,14 +20,8 @@ require("jquery")
 //= require jquery_ujs
 window.$ = window.jQuery = require('jquery');
 
-// import Raty from "raty.js"
-// window.raty = function(elem,opt){
-//   let raty =  new Raty(elem,opt)
-//   raty.init();
-//   return raty;
-// }
-// import "./preview";
-// import "./post";
+//import "./preview";
+//import "./post";
 
 Rails.start()
 Turbolinks.start()

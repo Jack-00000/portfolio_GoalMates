@@ -7,17 +7,12 @@ class Public::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     @comment.post_id = post.id
-    if @comment.save
-      render :index
-    else
-      render :errors
-    end
+    @comment.save
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    render :index
   end
 
   private

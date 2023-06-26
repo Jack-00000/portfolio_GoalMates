@@ -9,9 +9,6 @@
         </span>
         <span><%= link_to post.user.name, user_path(post.user.id), class: "text-dark" %></span>
       </div>
-      <%= link_to post_path(post.id) do %>
-        <%= image_tag post.get_image(700,700), class: "border-bottom card-img-top"; %>
-      <% end %>
       <div class="card-body">
         <div class="row">
           <div class="ml-3">

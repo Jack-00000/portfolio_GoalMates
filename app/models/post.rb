@@ -17,12 +17,26 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id) if user
   end
 
-  #メニュー名を曖昧検索するためのメソッド
+  #目標を曖昧検索するためのメソッド
   def self.search_for(content)
     if content != nil
-      where('menu LIKE ?', '%' + content + '%').order(created_at: :desc)
+      where('goal LIKE ?', '%' + content + '%').order(created_at: :desc)
     else
       order(created_at: :desc)
+    end
+  end
+
+  def self.sort_index(sort)
+    case (sort)
+      #投稿のいいねが多い順に並び替え
+      when 'favorite_count'
+        eager_load(:favorites).group('posts.id').order('count(favorites.post_id) DESC')
+      #投稿のコメントが多い順に並び替え
+      when 'comment_count'
+        eager_load(:comments).group('posts.id').order('count(comments.post_id) DESC')
+      else
+        #投稿の新しい順に並び替え
+        order(created_at: :desc)
     end
   end
 

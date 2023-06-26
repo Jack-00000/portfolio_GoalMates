@@ -1,0 +1,2 @@
+$('#comments-count').html("<%= j(render 'admin/comments/count', post: @comment.post) %>")
+$('#comments-area').html("<%= j(render 'admin/comments/index', post: @comment.post) %>")

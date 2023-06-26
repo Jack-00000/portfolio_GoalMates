@@ -6,9 +6,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-
     released_user_ids = User.where(status: :released).or(User.where(id: current_user&.id)).pluck(:id)
-
     @posts = Post.where(user_id: released_user_ids).sort_index(params[:sort]).page(params[:page])
   end
 

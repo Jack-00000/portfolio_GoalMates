@@ -1,0 +1,67 @@
+<div class="container">
+  <!--begin:user info-->
+  <div class="row">
+    <div class="col-lg-4 mb-3 text-center">
+      <%= image_tag user.get_profile_image(120,120), class: "mt-o rounded-circle"; %>
+    </div>
+    <div class="col-lg-5">
+      <div>
+        <% if user.released? %>
+          <h4><font color="#28a745">公開ユーザーです</font></h4>
+        <% elsif user.nonreleased? %>
+          <h4><font color="#6c757d">非公開ユーザーです</font></h4>
+        <% else %>
+          <h4><font color="#dc3545">退会済みユーザーです</font></h4>
+        <% end %>
+        <strong>ニックネーム</strong>:
+        <%= user.name %>
+      </div>
+      <div>投稿件数：<%= user.posts.count %></div>
+      <% if user.name != "guestuser" %>
+        <div class="row">
+          <div class="mx-3">フォロー<%= user.followings.count %>人</div>
+          <div>フォロワー<%= user.followers.count %>人</div>
+        </div>
+        <div class="row">
+          <div class="m-3"><%= link_to 'プロフィールを編集', edit_admin_user_path(user.id), class: 'btn btn-sm btn-success', 'data-turbolinks': false %></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <!--end:user info-->
+  <!--begin:user introduction-->
+  <div class="row  pl-3">
+    <strong>自己紹介</strong>
+  </div>
+  <div class="row mb-5">
+    <div class="card-text col-12">
+      <div class="media border rounded pb-5">
+        <% if user.name != "guestuser" %>
+          <% if user.introduction.present? %>
+            <div><%= user.introduction %></div>
+          <% else %>
+            <div>自己紹介文がありません</div>
+          <% end %>
+        <% else %>
+          <div>ゲストユーザーです。</div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <!--end:user introduction-->
+  <hr>
+  <!--begin:post history-->
+  <div class="row">
+    <div class="col-12">
+      <h2 class="headline col-lg-4 col-md-7 col-sm-12 text-center mt-3">投稿履歴</h2>
+    </div>
+    <div class="col-12">
+      <% if user.posts.present? %>
+        <div><%= render 'admin/posts/history', posts: posts %></div>
+      <% else %>
+        <div>まだ投稿がありません。</div>
+      <% end %>
+    </div>
+  </div>
+  <!--end:post history-->
+</div>

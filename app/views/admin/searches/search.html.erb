@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 mx-auto">
+      <%= render 'layouts/admin_sidebar' %>
+    </div>
+    <div class="col-lg-9 mx-auto">
+      <div class="card shadow-lg py-3">
+        <% if @users.present? && @posts.present? %>
+          <div class="px-3">
+            <h3 class="headline col-lg-9 col-md-12 col-sm-12 text-center mb-3">【ユーザーとメニュー名の検索結果】検索ワード："<%= @content %>"</h3>
+            <h4>【ユーザー】</h4>
+              <%= render 'admin/users/index', users: @users %>
+            <hr class="mt-5">
+            <h4>【メニュー名】</h4>
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-12 mx-auto">
+            <%= render 'admin/posts/index', posts: @posts %>
+          </div>
+
+        <% elsif @users.present? && @posts.empty? %>
+          <div class="px-3">
+            <h3 class="headline col-lg-9 col-md-12 col-sm-12 text-center mb-3">【ユーザーの検索結果】検索ワード："<%= @content %>"</h3>
+            <h4>【ユーザー】</h4>
+            <%= render 'admin/users/index', users: @users %>
+          </div>
+
+        <% elsif @users.empty? && @posts.present? %>
+          <div class="px-3">
+            <h3 class="headline col-lg-9 col-md-12 col-sm-12 text-center mb-3">【メニュー名の検索結果】検索ワード："<%= @content %>"</h3>
+            <h4>【メニュー名】</h4>
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-12 mx-auto">
+            <%= render 'admin/posts/index', posts: @posts %>
+          </div>
+
+        <% else %>
+          <div class="px-3">
+            <h3>"<%= @content %>"に該当はありません。</h3>
+          </div>
+        <% end %>
+      </div>
+      <%= link_to '戻る', :back, class: "btn btn-outline-dark mt-3" %>
+    </div>
+  </div>
+</div>

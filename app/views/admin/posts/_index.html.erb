@@ -1,0 +1,42 @@
+<div class="card-list-container mb-5">
+  <% posts.each do |post| %>
+    <div class="card w-70 mx-auto mb-5 shadow-lg">
+      <div class="card-header">
+        <span>
+          <%= link_to admin_user_path(post.user.id) do %>
+            <%= image_tag post.user.get_profile_image(50,50), class: "mt-o rounded-circle"; %>
+          <% end %>
+        </span>
+        <span><%= link_to post.user.name, admin_user_path(post.user.id), class: "text-dark" %></span>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="ml-3">
+            <%= render 'admin/posts/favorites-count', post: post %>
+          </div>
+          <div class="ml-3">
+            <%= render 'admin/comments/count', post: post %>
+          </div>
+          <div class="ml-5">
+            <b>
+              <% if post.user.released? %>
+                <font color="#28a745">公開</font>
+              <% elsif post.user.nonreleased? %>
+                <font color="#6c757d ">非公開</font>
+              <% else %>
+                <font color="#dc3545">退会</font>
+              <% end %>
+            </b>
+          </div>
+        </div>
+        <div class="card-title">
+          目標：<%= link_to post.goal, admin_post_path(post.id), class: "text-dark" %>
+        </div>
+        <div class="card-text">
+          具体的な行動：<%= link_to post.action, admin_post_path(post.id), class: "text-dark" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%= paginate posts %>
