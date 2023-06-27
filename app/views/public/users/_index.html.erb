@@ -3,16 +3,16 @@
     <% users.each do |user| %>
       <tr>
         <td class="text-center">
-          <%= link_to admin_user_path(user.id) do %>
-            <%= image_tag user.get_profile_image(100,100), class: "users-index-image mt-2 mt-o rounded-circle"; %><br>
+          <%= link_to user_path(user.id) do %>
+            <%= image_tag user.get_profile_image(100,100), class: "users-index-image rounded-circle"; %><br>
           <% end %>
         </td>
         <td>
-          <%= link_to admin_user_path(user.id) do %>
+          <%= link_to user_path(user.id) do %>
             <div class="mt-3"><%= user.name %></div>
           <% end %>
         </td>
-        <td class="spview">
+        <td class="spview d-none d-sm-block">
           <div class="mt-3">【自己紹介】</div>
           <% if user.name != "guestuser" %>
             <% if user.introduction.present? %>
@@ -24,15 +24,11 @@
             <div class="users-index">ゲストユーザーです。</div>
           <% end %>
         </td>
-        <td class="text-center">
-          <div class="mt-3">
-            <% if user.released? %>
-              <%= link_to user.status_i18n, edit_admin_user_path(user.id), class: "btn btn-success" %>
-            <% elsif user.nonreleased? %>
-              <%= link_to user.status_i18n, edit_admin_user_path(user.id), class: "btn btn-secondary" %>
-            <% else %>
-              <%= link_to user.status_i18n, edit_admin_user_path(user.id), class: "btn btn-danger" %>
-            <% end %>
+        <td>
+          <div class="mt-2">
+            <div class="follow-btn<%= user.id %> text-nowrap">
+              <%= render 'public/relationships/btn', user: user %>
+            </div>
           </div>
         </td>
       </tr>

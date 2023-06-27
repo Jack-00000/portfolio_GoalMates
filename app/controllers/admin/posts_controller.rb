@@ -3,8 +3,6 @@ class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    ##サイドバーにソート機能を実装
-    #sort_indexメソッドはモデルに記述
     @posts = Post.sort_index(params[:sort]).page(params[:page])
   end
 
