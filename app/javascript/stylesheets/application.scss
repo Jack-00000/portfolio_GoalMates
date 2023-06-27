@@ -18,10 +18,7 @@ body {
   min-height: 100vh;
 }
 
-//画面全体的に下記値でマージンを設ける
-.wrapper{
-  margin: 60px 10px;
-}
+
 
 
 footer {
@@ -29,10 +26,18 @@ footer {
 }
 
 header {
-  background-color: #363738;
+  background-color: #111111;
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 #error_explanation {
   color: #f00;
+}
+
+body.top-body {
+  background-image: url("../image/top_image.jpg");
+  background-attachment: fixed;
+  background-size:cover;                                 /* 画像のサイズを指定  */
+  width:100%;                                            /* 横幅のサイズを指定  */
+  height:400px;
 }

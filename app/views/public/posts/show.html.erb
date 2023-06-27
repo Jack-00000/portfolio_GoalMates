@@ -14,11 +14,7 @@
         <div class="row">
           <div class="col-sm-12 col-md-7 mb-3">
             <div class="favorite-btn<%= @post.id %>">
-              <% if current_user %>
                 <%= render 'public/favorites/btn', post: @post %>
-              <% else %>
-                <%= render 'public/favorites/btn_unlink', post: @post %>
-              <% end %>
             </div>
             <% if @post.user == current_user %>
               <div class="d-grid gap-2 d-md-block text-center">
