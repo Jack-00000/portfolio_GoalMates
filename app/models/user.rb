@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  # ユーザーに在籍状況ステータス”公開”、”非公開”、”退会のユーザー”
   enum status: { released: 0, nonreleased: 1, withdraw: 2 }
 
   #ユーザーステータスが”退会”以外のユーザーをユーザー一覧で表示させるためのscope

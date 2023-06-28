@@ -1,7 +1,7 @@
 class Public::SearchesController < ApplicationController
-  
-  before_action :authenticate_user!
 
+  before_action :authenticate_user!
+  # 非公開ユーザの非表示
   def search
     @content = params[:content]
     @users = User.active_user.search_for(@content).page(params[:page])

@@ -25,6 +25,7 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+#不適切な投稿をされる方の退会処理
   def is_deleted
     @user = current_user
     @user.update(status: 2)

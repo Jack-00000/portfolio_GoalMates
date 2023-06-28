@@ -27,6 +27,7 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  # 　退会確認
   def confirm_deleted
     @user = current_user
   end
@@ -50,6 +51,7 @@ private
     params.require(:user).permit(:name, :profile_image, :introduction, :status)
   end
 
+  # 　プロフィールアクセス制限
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
@@ -58,6 +60,7 @@ private
     end
   end
 
+  # ゲストのプロフィールアクセス制限
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "guestuser"
