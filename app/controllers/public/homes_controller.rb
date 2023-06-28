@@ -7,7 +7,7 @@ class Public::HomesController < ApplicationController
     released_user_ids = User.where(status: :released).or(User.where(id: current_user&.id)).pluck(:id)
     @posts = Post.where(user_id: released_user_ids)
     @posts = @posts.eager_load(:favorites).group('posts.id').order('count(favorites.post_id) DESC')
-    @posts = @posts.page(params[:page])
+    @posts = Post.page(params[:page])
   end
 
   def about

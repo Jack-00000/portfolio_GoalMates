@@ -7,7 +7,7 @@ class Admin::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find.page(params[:page]).per(6)
   end
 
   def destroy

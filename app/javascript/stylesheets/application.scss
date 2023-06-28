@@ -18,9 +18,6 @@ body {
   min-height: 100vh;
 }
 
-
-
-
 footer {
   margin-top: auto;
 }
@@ -35,7 +32,15 @@ header {
 }
 
 body.top-body {
-  background-image: url("../image/top_image.jpg");
+  background-image: url("../images/top_image.jpg");
+  background-attachment: fixed;
+  background-size:cover;                                 /* 画像のサイズを指定  */
+  width:100%;                                            /* 横幅のサイズを指定  */
+  height:400px;
+}
+
+body.top-except {
+  background-image: url("../images/background_image.jpg");
   background-attachment: fixed;
   background-size:cover;                                 /* 画像のサイズを指定  */
   width:100%;                                            /* 横幅のサイズを指定  */

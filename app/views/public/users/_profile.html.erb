@@ -18,6 +18,10 @@
       <div class="row">
         <div class="mr-3">投稿件数：<%= user.posts.count %></div>
       </div>
+      <div class="row my-2">
+        <div class="follow-count mb-2"><%= render 'public/relationships/follow_count', user: user %></div>
+        <div class="follow-btn<%= user.id %>"><%= render 'public/relationships/btn', user: user %></div>
+      </div>
       <div class="row mt-2 mb-3">
         <% if user == current_user %>
           <div class="mr-3"><%= link_to 'いいね一覧' + user.favorites.count.to_s + '件', favorites_posts_path, class: 'btn btn-sm btn-info' %></div>
