@@ -2,38 +2,32 @@
   <div class="row">
     <div class="col-lg-9 mx-auto">
         <div class="card shadow-lg px-3 py-3">
-          <!--begin:post details-->
           <h2 class="headline col-lg-4 col-md-7 col-sm-12 text-center">投稿詳細</h2>
           <div class="row">
-            <div class="pl-3 mb-2">
+            <div class="pl-3">
               <%= link_to admin_user_path(@post.user.id) do %>
-                <%= image_tag @post.user.get_profile_image(50,50), class: "mt-o rounded-circle"; %>
-                <%= @post.user.name %>
+                <%= image_tag @post.user.get_profile_image(100,100), class: "mt-o rounded-circle"; %>
+                <h2><%= @post.user.name %></h2>
+                <div><%= render 'admin/posts/favorites-count', post: @post %></div>
               <% end %>
             </div>
           </div>
-
           <div class="row">
             <div class="col-sm-12 col-md-7 mb-3">
-              <div><%= render 'admin/posts/favorites-count', post: @post %></div>
-              <div class="text-center">
-                <%= link_to "投稿を削除", admin_post_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-danger' %>
-              </div>
-            </div>
-            <div class="pl-3">
-              <dl>
-                <dt>投稿日</dt>
-                <dd class="post-detail"><%= @post.created_at.strftime('%Y/%m/%d') %></dd>
-                <dt>目標</dt>
-                <dd class="post-detail"><%= @post.goal %></dd>
-                <dt>具体的な目標</dt>
-                <dd class="post-detail"><%= @post.action %></dd>
-              </dl>
+              <%= link_to "投稿を削除", admin_post_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-danger' %>
             </div>
           </div>
-          <!--end:post details-->
+          <div class="pl-3">
+            <dl>
+              <dt>投稿日</dt>
+              <dd class="post-detail"><%= @post.created_at.strftime('%Y/%m/%d') %></dd>
+              <dt>目標</dt>
+              <dd class="post-detail"><%= @post.goal %></dd>
+              <dt>具体的な目標</dt>
+              <dd class="post-detail"><%= @post.action %></dd>
+            </dl>
+          </div>
           <hr>
-          <!--begin:list of comments-->
           <div class="row">
             <div class="col-12">
               <h3 class="headline col-lg-4 col-md-7 col-sm-12 text-center">コメント一覧</h3>
@@ -45,9 +39,8 @@
               </div>
             </div>
           </div>
-          <hr>
         </div>
-      <%= link_to '戻る', :back, class: "btn btn-outline-dark mt-3" %>
+      <%= link_to '戻る', :back, class: "btn btn-outline-dark my-3" %>
     </div>
   </div>
 </div>

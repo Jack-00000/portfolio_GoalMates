@@ -6,6 +6,14 @@ ja:
         nonreleased: "非公開"
         withdraw: "退会"
 
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
+
   activerecord:
     errors:
       messages:
@@ -13,6 +21,30 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+
+      models:
+      admin: 管理者
+      user: ユーザー
+      post: 投稿
+      favorite: いいね
+      relationship: フォロー
+      comment: コメント
+
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        introduction: 自己紹介文
+        status: 公開、非公開
+      post:
+        goal: 目標
+        action: 具体的な行動
+      comment:
+        comment: コメント
+      admin:
+        email: メールアドレス
+
   date:
     abbr_day_names:
     - 日

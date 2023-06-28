@@ -3,7 +3,7 @@
     <div class="col-lg-9 mx-auto">
       <div class="card shadow-lg px-3 py-3">
         <h2 class="headline col-lg-7 col-md-7 col-sm-12 text-center">
-          <%= @user.name %>さんの<br class="br-sp">フォロー一覧
+          <%= @user.name %>さんのフォロー一覧
         </h2>
         <% if @users.present? %>
           <%= render 'public/users/index', users: @users %>
