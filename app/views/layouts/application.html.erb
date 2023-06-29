@@ -37,11 +37,11 @@
       <% end %>
 
       <% if admin_signed_in? %>
-        <div class="text-center my-5">
+        <div class="text-center my-4">
           <%= render 'admin/searches/form' %>
         </div>
       <% elsif user_signed_in? %>
-        <div class="text-center my-5">
+        <div class="text-center my-4">
           <%= render 'public/searches/form' %>
         </div>
       <% end %>

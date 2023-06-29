@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-8 col-sm-12 round mx-auto">
-      <h2 class="text-dark bg-light rounded-top py-4 mb-0 text-center shadow-lg">プロフィール編集</h2>
-      <div class="form-body p-4 bg-white rounded-bottom shadow-lg">
+      <h2 class="text-dark bg-light rounded-top py-2 mb-0 text-center shadow-lg">プロフィール編集</h2>
+      <div class="form-body p-4 mb-3 bg-white rounded-bottom shadow-lg">
         <%= form_with model: @user, url:admin_user_path(@user.id), method: :patch do |f| %>
           <%= render 'layouts/errors', obj: @user %>
 
           <div class="form-group">
             <label for="user_image">【プロフィール画像】</label>
-            <div id="edit-image"><%= image_tag @user.get_profile_image(120, 120), class: "rounded-circle" %></div>
+            <div id="edit-image"><%= image_tag @user.get_profile_image(110, 110), class: "rounded-circle" %></div>
             <div class="mt-2"><%= f.file_field :profile_image, accept: "image/*" %></div>
           </div>
 
@@ -31,7 +31,7 @@
 
           <div class="form-group">
             <label for="user_name">
-              【ニックネーム】
+              【名前】
               <span class="required">必須</span>
             </label>
             <div><%= f.text_field :name, class: "form-control" %></div>
@@ -39,15 +39,14 @@
 
           <div class="form-group">
             <label for="user_introduction">【自己紹介】</label>
-            <div><%= f.text_area :introduction, class: "form-control", rows: 5 %></div>
+            <div><%= f.text_area :introduction, class: "form-control", rows: 3 %></div>
           </div>
 
           <div class="form-group">
-            <%= f.submit '情報を更新する', class: "btn btn-block btn-success mt-5" %>
+            <%= f.submit '情報を更新する', class: "btn btn-block btn-success mt-4" %>
           </div>
         <% end %>
       </div>
-      <%= link_to '戻る', :back, class: "btn btn-outline-dark mt-3" %>
     </div>
   </div>
 </div>

@@ -2,14 +2,16 @@
   <div class="row">
     <div class="col-lg-9 mx-auto">
       <div class="card shadow-lg px-3 py-3">
-        <h2 class="headline col-lg-8 col-md-8 col-sm-12 text-center">
+        <h2 class="headline col-lg-12 col-md-12 col-sm-12 text-center">
           <%= @user.name %>さんのフォロワー一覧
         </h2>
-        <% if @users.present? %>
-          <%= render 'public/users/index', users: @users %>
-        <% else %>
-          <p>まだフォロワーがいません。</p>
-        <% end %>
+        <div class="mt-2">
+          <% if @users.present? %>
+            <%= render 'public/users/index', users: @users %>
+          <% else %>
+            <p>まだフォロワーがいません。</p>
+          <% end %>
+        </div>
       </div>
       <%= link_to '戻る', :back, class: "btn btn-outline-dark mt-3" %>
     </div>
