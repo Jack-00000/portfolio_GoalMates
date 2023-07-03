@@ -13,6 +13,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    @post.score = Language.get_data(post_params[:action])
     if @post.save
       flash[:notice] = "投稿に成功しました"
       redirect_to post_path(@post.id)
