@@ -34,6 +34,7 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @post.score = Language.get_data(post_params[:action])
     if @post.update(post_params)
       flash[:notice] = "編集に成功しました"
       redirect_to post_path(@post.id)
