@@ -35,7 +35,7 @@
   <div class="row pl-3">
     <strong>自己紹介</strong>
   </div>
-  <div class="row mb-5">
+  <div class="row">
     <div class="card-text col-12">
       <div class="media border rounded pb-5">
         <% if user.name != "guestuser" %>
@@ -52,7 +52,7 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <h2 class="headline col-lg-4 col-md-7 col-sm-12 text-center mt-3">投稿履歴</h2>
+      <h2 class="headline col-lg-4 col-md-7 col-sm-12 mt-3">投稿履歴</h2>
     </div>
     <div class="col-12">
       <% if user.released? || user == current_user %>
