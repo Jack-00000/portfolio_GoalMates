@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   scope module: :public do
 
     root to: 'homes#top'
-    get '/about' => 'homes#about'
     get 'search' => 'searches#search'
     get '/mypage' => 'users#mypage'
     get 'users/confirm_deleted' => 'users#confirm_deleted', as: 'confirm_deleted'
