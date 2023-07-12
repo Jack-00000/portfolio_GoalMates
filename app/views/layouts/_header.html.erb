@@ -1,14 +1,15 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <%= link_to 'GoalMates', root_path, class: "navbar-brand" %>
-
-      <div class="text-light">
-        <% if user_signed_in? %>
-          ようこそ、<%= current_user.name %>さん！
+  　   <% if admin_signed_in? %>
+        <%= link_to admin_root_path do %>
+          <%= image_tag('logo.png', width: '13%', height: '13%') %>
         <% end %>
-      </div>
-
+      <% else %>
+        <%= link_to root_path do %>
+          <%= image_tag('logo.png', width: '13%', height: '13%') %>
+        <% end %>
+      <% end %>
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Taggle navigaion">
         <span class="navbar-toggler-icon"></span>
       </button>
