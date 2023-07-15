@@ -20,13 +20,13 @@
               <dd class="post-detail"><%= @post.goal %></dd>
               <dt>行動</dt>
               <dd class="post-detail"><%= @post.action %> </dd>
-            </dl>
-            <p class="sentiment-score">本文の感情分析スコア[<%= @post.score %>]</p>
-          </div>
-          <div class="col-sm-12 col-md-7">
-            <div class="favorite-btn<%= @post.id %>">
+              <dt>お気に入り</dt>
+              <dt class="favorite-btn<%= @post.id %>">
                 <%= render 'public/favorites/btn', post: @post %>
-            </div>
+              </dt>
+            </dl>
+          </div>
+          <div class="col-sm-12 col-md-7 ">
             <% if @post.user == current_user %>
               <div class="d-grid gap-2 d-md-block text-center">
                 <%= link_to "投稿を編集", edit_post_path, class: 'btn btn-success', 'data-turbolinks': false %>

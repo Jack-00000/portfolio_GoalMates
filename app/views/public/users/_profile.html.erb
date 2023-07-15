@@ -52,9 +52,9 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <h2 class="headline col-lg-4 col-md-7 col-sm-12 mt-3">投稿履歴</h2>
+      <h2 class="headline col-lg-4 col-md-7 col-sm-12 my-3">投稿履歴</h2>
     </div>
-    <div class="col-12">
+    <div class="col-12 mb-4">
       <% if user.released? || user == current_user %>
         <% if user.posts.present? %>
           <div><%= render 'public/posts/history', posts: posts %></div>

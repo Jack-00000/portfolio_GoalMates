@@ -25,10 +25,12 @@
         <div class="card-title">
           目標：<%= link_to post.goal, post_path(post.id), class: "text-dark" %>
         </div>
-        <div class="card-text">
+        <div class="card-text mb-3">
           具体的な行動：<%= link_to post.action, post_path(post.id), class: "text-dark" %>
         </div>
-        <span class="sentiment-score">本文の感情分析スコア<%= post.score %></span>
+        <div class="sentiment-score">
+          本文の感情分析スコア: <%= post.score %>
+        </div>
       </div>
     </div>
   <% end %>

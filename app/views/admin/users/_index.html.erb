@@ -1,10 +1,10 @@
-<table class="table">
+<table class="table mb-0">
   <tbody>
     <% users.each do |user| %>
       <tr>
         <td class="text-center">
           <%= link_to admin_user_path(user.id) do %>
-            <%= image_tag user.get_profile_image(100,100), class: "users-index-image mt-2 mt-o rounded-circle"; %><br>
+            <%= image_tag user.get_profile_image(65,65), class: "users-index-image mt-2 mt-o rounded-circle"; %><br>
           <% end %>
         </td>
         <td>

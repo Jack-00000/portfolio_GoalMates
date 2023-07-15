@@ -35,15 +35,7 @@ header {
   color: #f00;
 }
 
-body.top-body {
-  background-image: url("../images/top_image.jpg");
-  background-attachment: fixed;
-  background-size:cover;
-  width:100%;
-}
-
-// トップ画面以外の背景
-body.top-except {
+body {
   background-image: url("../images/background_image.jpg");
   background-attachment: fixed;
   background-size:cover;
