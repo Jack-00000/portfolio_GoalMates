@@ -44,9 +44,9 @@
 
 ## 設計書
 * 実装機能リスト
-* UI flow
-* ワイヤーフレーム
 * ER図
+![ER図 drawio](https://github.com/Jack-00000/portfolio_GoalMates/assets/129925697/dbe63394-87d5-46ac-b0dc-a1f865139e6a)
+
 * テーブル定義書
 * アプリケーション詳細設計
 
@@ -57,6 +57,6 @@
 * JSライブラリ：jQuery
 * IDE：Cloud9
 
-<!--### 使用素材-->
-<!--* 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。-->
-<!--* 使用しない場合は、使用素材の項目をREADMEから削除してください。-->
+## 使用素材
+* canva：https://www.canva.com/
+* いらすとや：https://www.irasutoya.com/
