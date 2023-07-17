@@ -1,8 +1,8 @@
 # GoalMates
 
 <img width="1237" alt="GoalMates" src="https://github.com/Jack-00000/portfolio_GoalMates/assets/129925697/d4d985f9-f48e-4e4d-aa0f-78c79e61b6d2">
----
 
+---
 * [サイトテーマ](#サイトテーマ)
 * [テーマを選んだ理由](#テーマを選んだ理由)
 * [ターゲットユーザ](#ターゲットユーザ)
